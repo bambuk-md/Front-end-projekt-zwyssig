@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Tasks from './App';
+import Tasks from './AppDelete';
 import './App.css';
 
 function welcome() {

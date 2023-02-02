@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tasks from "./App";
+import Tasks from "./AppDelete";
 
 interface Props {
   taskid: number;
@@ -7,11 +7,12 @@ interface Props {
 interface Task {
     id: number;
     title: string;
+    completed: boolean;
   }
 
 
 const GetTask = (props: Props) => {
-    const [tasks, setTasks] = useState<Task>({id: 0, title: ""});
+    const [tasks, setTasks] = useState<Task>({id: 0, title: "", completed: false});
     const [error, setError] = useState<Error | null>(null);
   
     useEffect(() => {

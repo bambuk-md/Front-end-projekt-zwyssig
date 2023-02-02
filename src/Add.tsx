@@ -8,13 +8,13 @@ interface Task {
 
 const Taskers = () => {
     const [task, setTask] = useState<Task>({
-        id: Date.now(),
+        id: 0,
         title: "",
         completed: false,
     });
     const [error, setError] = useState<Error | null>(null);
 
-    const updateTask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const updateTask = (event: React.ChangeEvent<HTMLInputElement>) => { //inspiration von https://bobbyhadz.com/blog/typescript-react-onchange-event-type
         setTask({ ...task, title: event.target.value });
     };
 
