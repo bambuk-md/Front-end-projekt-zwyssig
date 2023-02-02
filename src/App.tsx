@@ -17,6 +17,7 @@ const Tasks = () => {
   useEffect(() => {
     fetch("http://127.0.0.1:3000/tasks", {
             method: "GET",
+            headers: {"Content-Type": "application/json" }
             
         })
       .then(res => res.json())
