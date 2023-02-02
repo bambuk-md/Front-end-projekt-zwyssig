@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 interface Task {
     id: number;
     title: string;
-    completed: boolean;
+    completed: boolean; //add source
   }
 
 
