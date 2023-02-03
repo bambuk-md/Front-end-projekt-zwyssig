@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+
+import React, {  useState } from "react";
 
 interface Task {
     id: number;
     title: string;
     completed: boolean;
 }
+
 
 const Taskers = () => {
     const [task, setTask] = useState<Task>({
@@ -16,27 +18,30 @@ const Taskers = () => {
 
     const updateTask = (event: React.ChangeEvent<HTMLInputElement>) => { //inspiration von https://bobbyhadz.com/blog/typescript-react-onchange-event-type
         setTask({ ...task, title: event.target.value });
+        
     };
 
-    const addTask = () => {
+    const addTask = async () => {
+      try {
         const jwtToken = sessionStorage.getItem("token");
-        fetch("http://127.0.0.1:3000/auth/jwt/tasks", {
+        const response = await fetch("http://127.0.0.1:3000/auth/jwt/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${jwtToken}`
           },
           body: JSON.stringify(task)
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Failed to add task");
-            }
-          })
-          .catch((error) => {
-            setError(error);
-          });
-      };
+        });
+        if (!response.ok) {
+          throw new Error("Failed to add task");
+        }
+        alert("Task created successfully!");
+        
+        
+      } catch (error) {
+        setError(error as Error | null);
+      }
+  };
 
     return (
         <div>

@@ -1,6 +1,4 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useState, useEffect } from "react";
-import Taskers from "./Add";
 import EditTaskForm from "./Put";
 import axios from "axios";
 import './App.css';
@@ -26,7 +24,7 @@ const Tasks = () => {
 
 useEffect(() => {
   getit();
-}, []);
+}, );
   
 const jwtToken = sessionStorage.getItem("token");
 const nav = useNavigate(); //hier und auch bei anderen Stellen https://bobbyhadz.com/blog/react-onclick-redirect
@@ -41,9 +39,11 @@ const getit = async () => {
     }); 
     setTasks(response.data);
   } catch (error) {
+    
     setError(error as Error | null);
-
     nav('/');
+
+    
   }
 };
 
@@ -55,7 +55,12 @@ const handleDelete = async (taskId: number) => {
         Authorization: `Bearer ${jwtToken}`
       }
     });
+
     getit();
+
+    if (error === null) {
+      alert('The delete was successful');
+    }
   } catch (error) {
     setError(error as Error | null);
   }
@@ -69,6 +74,7 @@ const handleUpdate = async (task: Task) => {
         Authorization: `Bearer ${jwtToken}`
       }
     });
+    alert("Task updated successfully!");
     getit();
   } catch (error) {
     setError(error as Error | null);
@@ -80,7 +86,7 @@ const tasktoedit = (task : Task) => {
 }
 
   if (error) {
-    return <div>An error occurred:, you will be redirected to login in 5 seconds {error.message}</div>;
+    return <div>An error occurred: {error.message}</div>;
   }
 
 
@@ -92,8 +98,8 @@ const tasktoedit = (task : Task) => {
         <li key={task.id}>
 
           {task.title}
-          
-          <button id="but1"onClick={() => handleDelete(task.id)}>delete Task</button>
+                   
+          <button onClick={() => handleDelete(task.id)}>delete Task</button>
           <button onClick={() => tasktoedit(task)}>Edit Task</button>
           
           
@@ -101,6 +107,7 @@ const tasktoedit = (task : Task) => {
       ))}
     </ul>
     <EditTaskForm taskToEdit={editit} taskEdited={handleUpdate} ></EditTaskForm>
+    
     
     </div>
   );

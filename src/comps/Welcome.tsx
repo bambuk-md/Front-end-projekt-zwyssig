@@ -1,9 +1,11 @@
-import exp from "constants";
 import React from "react";
 
 function Welcome(){
     return(
-        <h1>Welcome to your To-Do list</h1>
+        <div>
+        <h1>Welcome to your To-Do list, you are logged in</h1>
+        
+        </div>
     );
 };
 export default Welcome;

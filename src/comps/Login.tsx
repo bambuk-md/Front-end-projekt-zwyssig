@@ -6,10 +6,16 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const nav = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!email) {
+      setErrorMessage('Email is required');
+      return;
+    }
 
     const data = { email, password };
 
@@ -18,9 +24,7 @@ const Login = () => {
         if (response.data.token) {
           sessionStorage.setItem('token', response.data.token);
           nav('/main');
-
-        };
-      
+        }
       })
       .catch(error => {
         console.error(error);
@@ -28,13 +32,15 @@ const Login = () => {
   };
 
   return (
-    
-    <form onSubmit={handleSubmit}>
-      <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button type="submit">Submit</button>
-    </form>
-
+    <div id="login">
+      <h1>You are not logged in with an email and the password m294</h1>
+      {errorMessage && <div>{errorMessage}</div>}
+      <form id="loginform" onSubmit={handleSubmit}>
+        <input className='log' type="email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input className='log' type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

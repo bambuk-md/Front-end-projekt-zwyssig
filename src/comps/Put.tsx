@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { isPropertySignature } from "typescript";
 import {Task} from "./AppDelete";
 import React from "react";
 

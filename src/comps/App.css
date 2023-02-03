@@ -98,3 +98,25 @@ input[type="button"] {
   margin-left: 40%;
   border-radius: 5px;
 }
+#login{
+  margin-top: 20px;
+  margin-left: 20px;
+  
+  padding: 5px;
+  
+  height: 200px;
+}
+#loginform{
+  display: flex;
+  border: solid;
+  border-color: black;
+  background-color: white;
+  padding: 5px;
+  justify-content: flex-end;
+  width: 95%;
+  
+}
+.log{
+  justify-content: left;
+  width: 370px;
+}
