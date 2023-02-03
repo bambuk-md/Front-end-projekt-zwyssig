@@ -29,11 +29,17 @@ function EditTaskForm(props: IProps) {
 
     return (
         <div className="editTaskForm">
-            Props-Title: {props.taskToEdit.title}
+            <ol>
             <form onSubmit={onFormSubmit}>
-                Bezeichnung: <input type="text" name="title" value={formData.title} onChange={onInputChange} required/>
+            <li>
+            
+            
+                <input type="text" name="title" placeholder="press edit to change a task" value={formData.title} onChange={onInputChange} required/>
                 <button>Save</button>
+            
+            </li>
             </form>
+            </ol>
         </div>
     )
 }

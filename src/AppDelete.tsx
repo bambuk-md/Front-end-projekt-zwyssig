@@ -2,6 +2,9 @@ import { type } from "@testing-library/user-event/dist/type";
 import React, { useState, useEffect } from "react";
 import Taskers from "./Add";
 import EditTaskForm from "./Put";
+import axios from "axios";
+import "./App.css"
+
 
 
 export type Task  ={
@@ -20,52 +23,53 @@ const Tasks = () => {
 });
   
 
-  useEffect(() => {
-    getit();
-  }, []);
-    
-    
+useEffect(() => {
+  getit();
+}, []);
   
-  const getit = () =>{
-    fetch("http://127.0.0.1:3000/tasks", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(res => res.json())
-      .then(data => setTasks(data))
-      .catch(error => setError(error));
+const jwtToken = sessionStorage.getItem("token");
 
+const getit = async () => {
+  try {
+    
+    const response = await axios.get("http://127.0.0.1:3000/auth/jwt/tasks", {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    }); 
+    setTasks(response.data);
+  } catch (error) {
+    setError(error as Error | null);
   }
+};
 
-  const handleDelete = (taskId: number) => {
-    fetch(`http://127.0.0.1:3000/task/${taskId}`, {
-      method: "DELETE"
+const handleDelete = async (taskId: number) => {
+  try {
     
-    })
-    
-    .then(res => {
-      getit();
-  })
-      .catch(error => setError(error));
-      
-      
-  };
+    await axios.delete(`http://127.0.0.1:3000/auth/jwt/task/${taskId}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    });
+    getit();
+  } catch (error) {
+    setError(error as Error | null);
+  }
+};
 
-  const handleUpdate = (task: Task) => {
-    fetch("http://127.0.0.1:3000/tasks", {
-        method: "PUT",
-        headers: {"Content-Type": "application/json" },
-        body: JSON.stringify(task),
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to update task");
-        }
-      })
-      .catch((error) => {
-        setError(error);
-      });
+const handleUpdate = async (task: Task) => {
+  try {
     
+    await axios.put("http://127.0.0.1:3000/auth/jwt/tasks", task, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    });
+    getit();
+  } catch (error) {
+    setError(error as Error | null);
+    
+  }
 };
 const tasktoedit = (task : Task) => {
     editTask(task);
@@ -77,13 +81,15 @@ const tasktoedit = (task : Task) => {
 
 
   return (
-    <div>
+    <div className="allsame">
     <ul>
       {tasks.map(task => (
+        
         <li key={task.id}>
+
           {task.title}
           
-          <button onClick={() => handleDelete(task.id)}>delete Task</button>
+          <button id="but1"onClick={() => handleDelete(task.id)}>delete Task</button>
           <button onClick={() => tasktoedit(task)}>Edit Task</button>
           
           

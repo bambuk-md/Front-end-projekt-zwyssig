@@ -19,21 +19,24 @@ const Taskers = () => {
     };
 
     const addTask = () => {
-        fetch("http://127.0.0.1:3000/tasks", {
-                method: "POST",
-                headers: {"Content-Type": "application/json" },
-                body: JSON.stringify(task),
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Failed to add task");
-                }
-            })
-            .catch((error) => {
-                setError(error);
-            });
-    };
-    
+        const jwtToken = sessionStorage.getItem("token");
+        fetch("http://127.0.0.1:3000/auth/jwt/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwtToken}`
+          },
+          body: JSON.stringify(task)
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to add task");
+            }
+          })
+          .catch((error) => {
+            setError(error);
+          });
+      };
 
     return (
         <div>
