@@ -4,6 +4,7 @@ import Taskers from "./Add";
 import EditTaskForm from "./Put";
 import axios from "axios";
 import "./App.css"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -28,6 +29,7 @@ useEffect(() => {
 }, []);
   
 const jwtToken = sessionStorage.getItem("token");
+const nav = useNavigate();
 
 const getit = async () => {
   try {
@@ -40,6 +42,7 @@ const getit = async () => {
     setTasks(response.data);
   } catch (error) {
     setError(error as Error | null);
+    nav('/');
   }
 };
 

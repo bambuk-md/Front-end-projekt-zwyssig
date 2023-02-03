@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import Main from './Main';
+import Main from './VerifyLogin';
 import Chooser from './Routechooser';
 ReactDOM.render(
   <React.StrictMode>

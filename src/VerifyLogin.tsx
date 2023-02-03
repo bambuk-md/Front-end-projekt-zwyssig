@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const VerifyLogin: React.FC = () => {
+const VerifyLogin = () => {
   const nav = useNavigate();
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (!token) {
-      nav('/');
+      nav('/login');
       return;
     }
 
