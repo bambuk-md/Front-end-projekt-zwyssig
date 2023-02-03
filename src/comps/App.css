@@ -90,3 +90,11 @@ input[type=text] {
   
   
 }
+input[type="button"] {
+  padding: 10px 20px;
+  border: 5px;
+  background-color: lightgray;
+  cursor: pointer;
+  margin-left: 40%;
+  border-radius: 5px;
+}

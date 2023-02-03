@@ -40,14 +40,20 @@ const Taskers = () => {
 
     return (
         <div>
+          <form>
             <input
                 type="text"
                 placeholder="Add title"
                 value={task.title}
                 onChange={updateTask}
             />
-            <button onClick={addTask}>Add Task</button>
+
+            <label> 
+            <input type="button" onClick={addTask} value="Add Task"  ></input>
+            </label>
+            
             {error && <div>An error occurred: {error.message}</div>}
+            </form>
         </div>
     );
 };

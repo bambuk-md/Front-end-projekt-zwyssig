@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tasks from "./AppDelete";
+import Tasks from "./comps/AppDelete";
 
 interface Props {
   taskid: number;

@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# Dokumentation des Projektes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Informationen zur OrdnerStruktur
+-Im Ordner Comps sind alle Komponente des Projektes, um die Ordnerstruktur zu verbessern (inklusiv die CSS Dateien)
+-Index.tsx rendert alle Komponente
 
-## Available Scripts
+## Frontend und Backend starten
+Im Ganzen Projekt werden Requests zur Addresse: http://127.0.0.1:3000 geschickt. Es ist also zu empfehlen, zuerst das Backend, danach das Frontend zu starten. 
 
-In the project directory, you can run:
+## Informationen zum Routing: 
+Index.tsx rendert das Komponent "Chooser" (Routechooser.tsx), was alle andere Komponente rendert. Als default (localhost...:3001/) wird das VerifyLogin Komponent gerendert. Dieses schaut, ob man eingelogt ist. Wenn nicht wird man zum Komponent Login geführt, sonst zum Komponent Main. Wenn man direkt zu (localhost...:3001/main) geht, und man nicht eingelogt ist, wird zu (localhost:3001/) navigiert, wo wieder geschaut wird, ob man eingelogt ist...
 
-### `npm start`
+# Informationen zu GitHub
+Das Projekt ist unter: (https://github.com/bambuk-md/Front-end-projekt-zwyssig) zu finden. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Informationen zur Quellenangabe
+Neben den Code, den ich kopiert, teilweise kopiert habe, wird die Quelle angegeben.

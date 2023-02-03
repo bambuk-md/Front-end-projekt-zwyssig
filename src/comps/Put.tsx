@@ -16,8 +16,7 @@ function EditTaskForm(props: IProps) {
     useEffect(() => setFormData(props.taskToEdit), [props])
     
     function onInputChange(event : React.ChangeEvent<HTMLInputElement>) {
-       //name: Name des Formularfelds
-       //value: Wert       
+        
         const {name, value} = event.target;
         setFormData({...formData, [name]: value});
     }

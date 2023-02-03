@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Taskers from "./Add";
 import EditTaskForm from "./Put";
 import axios from "axios";
-import "./App.css"
+import './App.css';
 import { useNavigate } from "react-router-dom";
 
 
@@ -29,7 +29,7 @@ useEffect(() => {
 }, []);
   
 const jwtToken = sessionStorage.getItem("token");
-const nav = useNavigate();
+const nav = useNavigate(); //hier und auch bei anderen Stellen https://bobbyhadz.com/blog/react-onclick-redirect
 
 const getit = async () => {
   try {
@@ -42,6 +42,7 @@ const getit = async () => {
     setTasks(response.data);
   } catch (error) {
     setError(error as Error | null);
+
     nav('/');
   }
 };
@@ -79,7 +80,7 @@ const tasktoedit = (task : Task) => {
 }
 
   if (error) {
-    return <div>An error occurred: {error.message}</div>;
+    return <div>An error occurred:, you will be redirected to login in 5 seconds {error.message}</div>;
   }
 
 

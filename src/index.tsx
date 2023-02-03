@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import Main from './VerifyLogin';
-import Chooser from './Routechooser';
+import Main from './comps/VerifyLogin';
+import Chooser from './comps/Routechooser';
 ReactDOM.render(
   <React.StrictMode>
    <BrowserRouter>
