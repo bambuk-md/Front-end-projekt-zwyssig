@@ -15,3 +15,9 @@ Das Projekt ist unter: (https://github.com/bambuk-md/Front-end-projekt-zwyssig) 
 
 # Informationen zur Quellenangabe
 Neben den Code, den ich kopiert, teilweise kopiert habe, wird die Quelle angegeben.
+
+# Informationen zur Einhaltung von Coderichtlinien
+Zur Einhaltung von Coderichtlinien wurde das Tool ESLint verwendet. Es wurden keine Errors, Warnings angezeigt. 
+
+# Informationen zu Commits
+Alle Commits sind im File commits.txt zu finden.

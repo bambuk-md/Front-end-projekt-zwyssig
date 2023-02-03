@@ -97,7 +97,12 @@ const tasktoedit = (task : Task) => {
         
         <li key={task.id}>
 
-          {task.title}
+          {task.title} <br></br>
+
+
+          completed: { JSON.stringify(task.completed)}
+
+        
                    
           <button onClick={() => handleDelete(task.id)}>delete Task</button>
           <button onClick={() => tasktoedit(task)}>Edit Task</button>

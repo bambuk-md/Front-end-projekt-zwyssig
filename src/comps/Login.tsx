@@ -11,10 +11,13 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     
-    if (!email) {
-      setErrorMessage('Email is required');
+    if (!email || !password) {
+      alert('Input required');
+      setErrorMessage("error");
       return;
+      
     }
 
     const data = { email, password };
@@ -27,18 +30,21 @@ const Login = () => {
         }
       })
       .catch(error => {
+        alert('Login did not work');
         console.error(error);
       });
-  };
+};
+
+
 
   return (
     <div id="login">
-      <h1>You are not logged in with an email and the password m294</h1>
+      <h1>You are not logged in. Log in with an email and the password m294</h1>
       {errorMessage && <div>{errorMessage}</div>}
       <form id="loginform" onSubmit={handleSubmit}>
         <input className='log' type="email" value={email} onChange={e => setEmail(e.target.value)} />
         <input className='log' type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        <button type="submit">Submit</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
